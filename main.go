@@ -97,6 +97,16 @@ func main() {
 func OpenKeyRing(c *cli.Context) (err error) {
 	kr, err = keyring.Open(keyring.Config{
 		ServiceName: "volbo",
+		AllowedBackends: []keyring.BackendType{
+			keyring.KeychainBackend,      // MacOS Keychain
+			keyring.WinCredBackend,       // Windows Credentials Manager
+			keyring.SecretServiceBackend, // Linux libsecret over dbus
+		},
+		KeychainName:                   "login", // MacOS keychain name
+		KeychainTrustApplication:       true,
+		KeychainAccessibleWhenUnlocked: true,
+		LibSecretCollectionName:        "volbo",
+		WinCredPrefix:                  "volbo-",
 	})
 	return
 }

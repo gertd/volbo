@@ -1,2 +1,3 @@
 # volbo
-Simple multi platform vault for storing local secrets
+
+Simple local vault for storing secrets in the OS local keyring.
