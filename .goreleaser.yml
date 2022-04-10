@@ -68,13 +68,13 @@ brews:
       name: homebrew-tap
       token: "{{ .Env.HOMEBREW_TAP }}"
 
-    url_template: "https://github.com/gertd/dyndns/releases/download/{{ .Tag }}/{{ .ArtifactName }}"
+    url_template: "https://github.com/gertd/volbo/releases/download/{{ .Tag }}/{{ .ArtifactName }}"
 
     commit_author:
       name: Gert Drapers
       email: gert-bot@d5s.io
 
-    homepage: "https://github.com/gertd/dyndns"
+    homepage: "https://github.com/gertd/volbo"
 
     description: "Volbo CLI"
 
