@@ -11,10 +11,9 @@ import (
 type VersionCmd struct{}
 
 func (cmd *VersionCmd) Run(c *cc.CommonCtx) error {
-	fmt.Fprintf(c.OutWriter(), "%s - %s (%s)\n",
+	fmt.Fprintf(c.OutWriter(), "%s - %s\n",
 		x.AppName,
 		version.GetInfo().String(),
-		x.AppVersionTag,
 	)
 	return nil
 }
