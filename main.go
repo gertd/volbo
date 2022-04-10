@@ -107,6 +107,7 @@ func OpenKeyRing(c *cli.Context) (err error) {
 		KeychainAccessibleWhenUnlocked: true,
 		LibSecretCollectionName:        "volbo",
 		WinCredPrefix:                  "volbo-",
+		FileDir:                        "~/.config/volbo/",
 	})
 	return
 }
