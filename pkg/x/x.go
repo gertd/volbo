@@ -1,7 +1,7 @@
 package x
 
 const (
-	AppDescription string = "volbo keyring"
+	AppDescription string = "simple multi-platform vault for storing local secrets"
 
 	// AppName -- application name.
 	AppName = "volbo"
