@@ -1,0 +1,89 @@
+before:
+  hooks:
+
+builds:
+  -
+    id: build
+    main: ./cmd/volbo
+    binary: volbo
+    goos:
+      - darwin
+      - linux
+      - windows
+    goarch:
+      - amd64
+      - arm64
+    env:
+      - CGO_ENABLED=0
+    ignore:
+      - goos: windows
+        goarch: arm64
+    ldflags:
+      - -s
+      - -w
+      - -X github.com/gertd/volbo/pkg/version.ver={{.Version}}
+      - -X github.com/gertd/volbo/pkg/version.commit={{.ShortCommit}}
+      - -X github.com/gertd/volbo/pkg/version.date={{.Date}}
+    mod_timestamp: '{{ .CommitTimestamp }}'
+
+archives:
+  - format: zip
+    replacements:
+      darwin: darwin
+      linux: linux
+      windows: windows
+      amd64: amd64
+    files:
+      - LICENSE
+      - README.md
+    name_template: "volbo-{{ .Version }}-{{ .Os }}-{{ .Arch }}"
+
+checksum:
+  name_template: 'checksums.txt'
+
+snapshot:
+  name_template: "{{ .Tag }}"
+
+changelog:
+  sort: asc
+  filters:
+    exclude:
+      - '^docs:'
+      - '^test:'
+
+release:
+  github:
+    owner: gertd
+    name: volbo
+
+  draft: false
+  prerelease: false
+  name_template: "volbo {{.Tag}}"
+
+brews:
+  - name: volbo
+
+    tap:
+      owner: gertd
+      name: homebrew-tap
+      token: "{{ .Env.HOMEBREW_TAP }}"
+
+    url_template: "https://github.com/gertd/dyndns/releases/download/{{ .Tag }}/{{ .ArtifactName }}"
+
+    commit_author:
+      name: Gert Drapers
+      email: gert-bot@d5s.io
+
+    homepage: "https://github.com/gertd/dyndns"
+
+    description: "Volbo CLI"
+
+    license: "MIT"
+
+    skip_upload: false
+
+    test: |
+      system "#{bin}/volbo version"
+
+    install: |
+      bin.install "volbo"
