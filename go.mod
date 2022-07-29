@@ -1,14 +1,18 @@
 module github.com/gertd/volbo
 
-go 1.16
+go 1.17
 
 require (
-	github.com/alecthomas/kong v0.5.0
-	github.com/danieljoos/wincred v1.1.2 // indirect
-	github.com/godbus/dbus/v5 v5.0.6 // indirect
+	github.com/alecthomas/kong v0.6.1
 	github.com/pkg/errors v0.9.1
-	github.com/stretchr/objx v0.3.0 // indirect
-	github.com/zalando/go-keyring v0.1.1
-	golang.org/x/crypto v0.0.0-20220408190544-5352b0902921
-	golang.org/x/sys v0.0.0-20220204135822-1c1b9b1eba6a // indirect
+	github.com/zalando/go-keyring v0.2.1
+	golang.org/x/term v0.0.0-20220722155259-a9ba230a4035
+)
+
+require (
+	github.com/alessio/shellescape v1.4.1 // indirect
+	github.com/danieljoos/wincred v1.1.2 // indirect
+	github.com/godbus/dbus/v5 v5.1.0 // indirect
+	github.com/stretchr/objx v0.4.0 // indirect
+	golang.org/x/sys v0.0.0-20220728004956-3c1f35247d10 // indirect
 )

@@ -8,7 +8,7 @@ import (
 	"github.com/gertd/volbo/pkg/cc"
 	"github.com/gertd/volbo/pkg/keyring"
 	"github.com/pkg/errors"
-	"golang.org/x/crypto/ssh/terminal"
+	"golang.org/x/term"
 )
 
 type SetCmd struct {
@@ -39,7 +39,7 @@ func (cmd *SetCmd) Run(c *cc.CommonCtx) error {
 		token = string(buf)
 
 	case cmd.Prompt:
-		buf, err := terminal.ReadPassword(0)
+		buf, err := term.ReadPassword(0)
 		if err != nil {
 			log.Fatalln(err)
 		}
